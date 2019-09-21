@@ -27,6 +27,10 @@ class MovieList extends Component {
     await getUpcomingMovies();
   }
 
+  changePage = async (event, nextPage) => {
+    const { getUpcomingMovies } = this.props;
+    await getUpcomingMovies(nextPage+1);
+  }
   render() {
     const { classes, movieList, totalResults, page } = this.props;
     return (

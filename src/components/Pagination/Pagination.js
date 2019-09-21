@@ -10,6 +10,7 @@ class Pagination extends Component {
     getUpcomingMovies: PropTypes.func.isRequired,
     totalResults: PropTypes.number.isRequired,
     page: PropTypes.number.isRequired,
+    isSearching: PropTypes.bool.isRequired,
   }
 
   changePage = async (event, nextPage) => {
@@ -18,8 +19,9 @@ class Pagination extends Component {
   }
 
   render() {
-    const { totalResults, page } = this.props;
-    return (
+    const { totalResults, page, isSearching } = this.props;
+
+    return !isSearching ?  (
       <TablePagination
         component="div"
         onChangePage={this.changePage}
@@ -27,6 +29,8 @@ class Pagination extends Component {
         rowsPerPage={20}
         count={totalResults}
         rowsPerPageOptions={[]} />
+    ) : (
+      <></>
     );
   }
 }

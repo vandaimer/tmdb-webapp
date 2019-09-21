@@ -9,43 +9,41 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { props, actions } from '../../reducer';
 
-
 class Search extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     search: PropTypes.func.isRequired,
-  }
+  };
 
   state = {
     word: '',
-  }
+  };
 
   search = () => {
     const { word } = this.state;
     const { search } = this.props;
 
     search(word);
-  }
+  };
 
   changeInput = event => {
     this.setState({ word: event.target.value });
-  }
+  };
 
   render() {
     const { classes } = this.props;
     return (
       <Paper className={classes.root}>
         <InputBase
-          onKeyDown={event => { if(event.keyCode === 13) this.search(event) }}
+          onKeyDown={event => {
+            if (event.keyCode === 13) this.search(event);
+          }}
           onChange={this.changeInput}
           className={classes.input}
           placeholder="Type and press enter"
           inputProps={{ 'aria-label': 'search upcoming movies' }}
         />
-        <IconButton
-          onClick={this.search}
-          className={classes.iconButton}
-          aria-label="search">
+        <IconButton onClick={this.search} className={classes.iconButton} aria-label="search">
           <SearchIcon />
         </IconButton>
       </Paper>
@@ -73,11 +71,10 @@ const styles = theme => ({
   },
 });
 
-
 export default compose(
   connect(
     props,
-    actions
+    actions,
   ),
-  withStyles(styles)
+  withStyles(styles),
 )(Search);

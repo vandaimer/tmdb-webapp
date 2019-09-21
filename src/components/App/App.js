@@ -10,7 +10,9 @@ function App(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <Typography variant="h1" component="h2">Upcoming Movies</Typography>
+      <Typography variant="h1" component="h2">
+        Upcoming Movies
+      </Typography>
       <Search />
       <MovieList />
       <Pagination />
@@ -18,18 +20,16 @@ function App(props) {
   );
 }
 
-
 App.propTypes = {
   classes: PropTypes.object.isRequired,
-}
-
+};
 
 const style = () => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  }
+  },
 });
 
 export default withStyles(style)(App);

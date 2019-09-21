@@ -11,7 +11,7 @@ const initialState = {
   page: 1,
 };
 
-const getUpcomingMovies = async (state, nextPage=1) => {
+const getUpcomingMovies = async (state, nextPage = 1) => {
   const uri = `${baseURL}/upcoming`;
 
   try {
@@ -29,11 +29,13 @@ const getUpcomingMovies = async (state, nextPage=1) => {
 const search = (state, word) => {
   const { movieList } = state;
 
-  if(word === '') {
+  if (word === '') {
     return { searchList: [], isSearching: false };
   }
 
-  const searchList = movieList.filter(({ title }) => title.toLowerCase().includes(word.toLowerCase()));
+  const searchList = movieList.filter(({ title }) =>
+    title.toLowerCase().includes(word.toLowerCase()),
+  );
 
   return { searchList, isSearching: true };
 };

@@ -14,15 +14,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import StarIcon from '@material-ui/icons/Star';
 import ImageUnavailable from './imageUnavailable.jpg';
 
-
-
 class MovieDetail extends Component {
   static propTypes = {
     open: PropTypes.bool.isRequired,
     classes: PropTypes.object.isRequired,
     toggleOpenState: PropTypes.func.isRequired,
     movie: PropTypes.object.isRequired,
-  }
+  };
 
   render() {
     const { classes, movie, open, toggleOpenState } = this.props;
@@ -31,10 +29,7 @@ class MovieDetail extends Component {
         <Modal open={open} onClose={toggleOpenState} center>
           <Card className={classes.card}>
             <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={movie.poster || ImageUnavailable}
-              />
+              <CardMedia className={classes.media} image={movie.poster || ImageUnavailable} />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   {movie.title}
@@ -45,14 +40,15 @@ class MovieDetail extends Component {
               </CardContent>
             </CardActionArea>
             <List component="nav" className={classes.root} aria-label="genres">
-              {Boolean(movie.genres.length) && movie.genres.map(genre => (
-                <ListItem button>
-                  <ListItemIcon>
-                    <StarIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={genre} />
-                </ListItem>
-              ))}
+              {Boolean(movie.genres.length) &&
+                movie.genres.map(genre => (
+                  <ListItem button>
+                    <ListItemIcon>
+                      <StarIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={genre} />
+                  </ListItem>
+                ))}
             </List>
           </Card>
         </Modal>
@@ -77,6 +73,5 @@ const styles = theme => ({
     width: 500,
   },
 });
-
 
 export default withStyles(styles)(MovieDetail);

@@ -13,12 +13,11 @@ import Typography from '@material-ui/core/Typography';
 import MovieDetail from './MovieDetail';
 import { props, actions } from '../../reducer';
 
-
 class MovieList extends Component {
   state = {
     movie: undefined,
     openModal: false,
-  }
+  };
 
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -28,7 +27,7 @@ class MovieList extends Component {
     page: PropTypes.number.isRequired,
     searchList: PropTypes.array.isRequired,
     isSearching: PropTypes.bool.isRequired,
-  }
+  };
 
   async componentDidMount() {
     const { getUpcomingMovies } = this.props;
@@ -37,12 +36,12 @@ class MovieList extends Component {
 
   showMovieDetail = movie => {
     this.setState({ movie, openModal: true });
-  }
+  };
 
   toggleOpenState = () => {
     const { openModal } = this.state;
     this.setState({ openModal: !openModal });
-  }
+  };
 
   render() {
     const { classes, movieList, searchList, isSearching } = this.props;
@@ -51,24 +50,17 @@ class MovieList extends Component {
 
     return (
       <List className={classes.root}>
-        {open && (<MovieDetail open movie={movie} toggleOpenState={this.toggleOpenState}/>)}
+        {open && <MovieDetail open movie={movie} toggleOpenState={this.toggleOpenState} />}
         {Boolean(dataList.length) ? (
           dataList.map((movie, index) => (
             <div key={index}>
-              <ListItem
-                onClick={() => this.showMovieDetail(movie)}
-                button
-                alignItems="flex-start">
+              <ListItem onClick={() => this.showMovieDetail(movie)} button alignItems="flex-start">
                 <ListItemAvatar>
                   <Avatar src={movie.backdrop} />
                 </ListItemAvatar>
                 <ListItemText
                   primary={movie.title}
-                  secondary={
-                    <React.Fragment>
-                      Release - {movie.release_date}
-                    </React.Fragment>
-                  }
+                  secondary={<React.Fragment>Release - {movie.release_date}</React.Fragment>}
                 />
               </ListItem>
               <Divider variant="inset" component="li" />
@@ -86,9 +78,8 @@ class MovieList extends Component {
                       variant="body2"
                       className={classes.inline}
                       color="textPrimary"
-                    >
-                    </Typography>
-                    {"Try again tomorrow, maybe you can have good news!!"}
+                    ></Typography>
+                    {'Try again tomorrow, maybe you can have good news!!'}
                   </React.Fragment>
                 }
               />
@@ -113,11 +104,10 @@ const styles = theme => ({
   },
 });
 
-
 export default compose(
   connect(
     props,
-    actions
+    actions,
   ),
-  withStyles(styles)
+  withStyles(styles),
 )(MovieList);

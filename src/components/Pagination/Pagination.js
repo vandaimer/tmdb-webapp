@@ -6,7 +6,6 @@ import { compose } from 'redux';
 import TablePagination from '@material-ui/core/TablePagination';
 import { props, actions } from '../../reducer';
 
-
 class Pagination extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -14,39 +13,42 @@ class Pagination extends Component {
     totalResults: PropTypes.number.isRequired,
     page: PropTypes.number.isRequired,
     isSearching: PropTypes.bool.isRequired,
-  }
+  };
 
   changePage = async (event, nextPage) => {
     const { getUpcomingMovies } = this.props;
-    await getUpcomingMovies(nextPage+1);
-  }
+    await getUpcomingMovies(nextPage + 1);
+  };
 
   render() {
     const { totalResults, page, isSearching, classes } = this.props;
 
-    return !isSearching ?  (
+    return !isSearching ? (
       <TablePagination
-        classes={ { root: classes.root } }
+        classes={{ root: classes.root }}
         component="div"
         onChangePage={this.changePage}
-        page={page-1}
+        page={page - 1}
         rowsPerPage={20}
         count={totalResults}
-        rowsPerPageOptions={[]} />
+        rowsPerPageOptions={[]}
+      />
     ) : (
       <></>
     );
   }
 }
 
-
 const style = () => ({
   root: {
     display: 'flex',
-  }
+  },
 });
 
 export default compose(
   withStyles(style),
-  connect(props, actions)
+  connect(
+    props,
+    actions,
+  ),
 )(Pagination);

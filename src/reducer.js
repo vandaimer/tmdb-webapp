@@ -4,6 +4,7 @@ const apiURL = 'http://localhost:8000';
 const baseURL = `${apiURL}/api/v1/movie`;
 
 const initialState = {
+  isSearching: false,
   movieList: [],
   totalResults: 0,
   page: 1,
@@ -24,10 +25,15 @@ const getUpcomingMovies = async (state, nextPage=1) => {
   }
 };
 
+const setIsSearching = (state, isSearching) => {
+  return { isSearching: isSearching };
+}
+
 const actions = store => ({
   getUpcomingMovies: (state, page) => getUpcomingMovies(state, page),
+  setIsSearching: (state, isSearching) => setIsSearching(state, isSearching),
 });
 
-const props = ['movieList', 'totalResults', 'page'];
+const props = ['movieList', 'totalResults', 'page', 'isSearching'];
 
 export { initialState, props, actions };

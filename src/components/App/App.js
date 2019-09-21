@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
+import MovieList from '../MovieList';
+import Pagination from '../Pagination';
+import Search from '../Search';
 
-function App() {
+function App(props) {
+  const { classes } = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+      <Search />
+      <MovieList />
+      <Pagination />
     </div>
   );
 }
 
-export default App;
+
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
+
+
+const style = () => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  }
+});
+
+export default withStyles(style)(App);

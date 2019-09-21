@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-const actions = store => ({});
 const apiURL = 'http://localhost:8000';
 const baseURL = `${apiURL}/api/v1/movie`;
 
@@ -22,6 +21,10 @@ const getUpcomingMovies = async state => {
     return { movieList };
   }
 };
+
+const actions = store => ({
+  getUpcomingMovies: state => getUpcomingMovies(state),
+});
 
 const props = ['movieList'];
 

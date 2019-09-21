@@ -37,6 +37,9 @@ class MovieDetail extends Component {
                 <Typography gutterBottom variant="h7" component="h4">
                   Release {movie.release_date}
                 </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {movie.overview}
+                </Typography>
               </CardContent>
             </CardActionArea>
             <List component="nav" className={classes.root} aria-label="genres">

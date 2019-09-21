@@ -20,6 +20,8 @@ class MovieList extends Component {
     movieList: PropTypes.array.isRequired,
     totalResults: PropTypes.number.isRequired,
     page: PropTypes.number.isRequired,
+    searchList: PropTypes.array.isRequired,
+    isSearching: PropTypes.bool.isRequired,
   }
 
   async componentDidMount() {
@@ -28,11 +30,13 @@ class MovieList extends Component {
   }
 
   render() {
-    const { classes, movieList } = this.props;
+    const { classes, movieList, searchList, isSearching } = this.props;
+    const dataList = isSearching ? searchList : movieList;
+
     return (
       <List className={classes.root}>
-        {Boolean(movieList.length) ? (
-          movieList.map((movie, index) => (
+        {Boolean(dataList.length) ? (
+          dataList.map((movie, index) => (
             <div key={index}>
               <ListItem alignItems="flex-start">
                 <ListItemAvatar>

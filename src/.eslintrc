@@ -1,0 +1,12 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "react/prop-types": "error",
+    "react/require-default-props": "error"
+  },
+  "globals": {
+    "fixture": "readonly",
+    "test": "readonly",
+    "selector": "readonly"
+  }
+}

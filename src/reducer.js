@@ -26,10 +26,6 @@ const getUpcomingMovies = async (state, nextPage=1) => {
   }
 };
 
-const setIsSearching = (state, isSearching) => {
-  return { isSearching: isSearching };
-}
-
 const search = (state, word) => {
   const { movieList } = state;
 
@@ -44,7 +40,6 @@ const search = (state, word) => {
 
 const actions = store => ({
   getUpcomingMovies: (state, page) => getUpcomingMovies(state, page),
-  setIsSearching: (state, isSearching) => setIsSearching(state, isSearching),
   search: (state, page) => search(state, page),
 });
 

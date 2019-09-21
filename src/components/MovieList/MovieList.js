@@ -19,6 +19,7 @@ class MovieList extends Component {
     getUpcomingMovies: PropTypes.func.isRequired,
     movieList: PropTypes.array.isRequired,
     totalResults: PropTypes.number.isRequired,
+    page: PropTypes.number.isRequired,
   }
 
   async componentDidMount() {
@@ -27,7 +28,7 @@ class MovieList extends Component {
   }
 
   render() {
-    const { classes, movieList, totalResults } = this.props;
+    const { classes, movieList, totalResults, page } = this.props;
     return (
       <List className={classes.root}>
         {Boolean(movieList.length) ? (

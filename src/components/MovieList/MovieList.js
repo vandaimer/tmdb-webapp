@@ -104,6 +104,9 @@ const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 560,
+    maxHeight: 600,
+    position: 'relative',
+    overflow: 'auto',
   },
   inline: {
     display: 'inline',

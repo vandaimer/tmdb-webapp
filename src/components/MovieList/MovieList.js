@@ -10,6 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import TablePagination from '@material-ui/core/TablePagination';
 import { props, actions } from '../../reducer';
 
 
@@ -31,6 +32,7 @@ class MovieList extends Component {
     const { getUpcomingMovies } = this.props;
     await getUpcomingMovies(nextPage+1);
   }
+
   render() {
     const { classes, movieList, totalResults, page } = this.props;
     return (
@@ -75,6 +77,13 @@ class MovieList extends Component {
             </ListItem>
           </div>
         )}
+        <TablePagination
+          component="div"
+          onChangePage={this.changePage}
+          page={page-1}
+          rowsPerPage={20}
+          count={totalResults}
+          rowsPerPageOptions={[]} />
       </List>
     );
   }

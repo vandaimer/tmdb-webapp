@@ -10,10 +10,16 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import MovieDetail from './MovieDetail';
 import { props, actions } from '../../reducer';
 
 
 class MovieList extends Component {
+  state = {
+    movie: undefined,
+    openModal: false,
+  }
+
   static propTypes = {
     classes: PropTypes.object.isRequired,
     getUpcomingMovies: PropTypes.func.isRequired,
@@ -29,18 +35,32 @@ class MovieList extends Component {
     await getUpcomingMovies();
   }
 
+  showMovieDetail = movie => {
+    this.setState({ movie, openModal: true });
+  }
+
+  toggleOpenState = () => {
+    const { openModal } = this.state;
+    this.setState({ openModal: !openModal });
+  }
+
   render() {
     const { classes, movieList, searchList, isSearching } = this.props;
+    const { openModal: open, movie } = this.state;
     const dataList = isSearching ? searchList : movieList;
 
     return (
       <List className={classes.root}>
+        {open && (<MovieDetail open movie={movie} toggleOpenState={this.toggleOpenState}/>)}
         {Boolean(dataList.length) ? (
           dataList.map((movie, index) => (
             <div key={index}>
-              <ListItem alignItems="flex-start">
+              <ListItem
+                onClick={() => this.showMovieDetail(movie)}
+                button
+                alignItems="flex-start">
                 <ListItemAvatar>
-                  <Avatar alt="Remy Sharp" src={movie.backdrop} />
+                  <Avatar src={movie.backdrop} />
                 </ListItemAvatar>
                 <ListItemText
                   primary={movie.title}

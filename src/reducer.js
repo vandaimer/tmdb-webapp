@@ -9,13 +9,13 @@ const initialState = {
   page: 1,
 };
 
-const getUpcomingMovies = async state => {
+const getUpcomingMovies = async (state, nextPage=1) => {
   const uri = `${baseURL}/upcoming`;
 
   try {
     const {
       data: { items: movieList, total_results: totalResults, page },
-    } = await axios.get(uri);
+    } = await axios.get(uri, { params: { page: nextPage } });
 
     return { movieList, totalResults, page: page };
   } catch (e) {
@@ -25,7 +25,7 @@ const getUpcomingMovies = async state => {
 };
 
 const actions = store => ({
-  getUpcomingMovies: state => getUpcomingMovies(state),
+  getUpcomingMovies: (state, page) => getUpcomingMovies(state, page),
 });
 
 const props = ['movieList', 'totalResults', 'page'];

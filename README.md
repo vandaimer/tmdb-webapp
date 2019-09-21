@@ -1,68 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## TMDB WEB APP
 
-## Available Scripts
+*Upcoming movies*  list from TMDb API.
 
-In the project directory, you can run:
+- Stack
+	- ReactJS (JS)
+	- Docker
+- Third-party libraries
+	- @material-ui/core: ReactJS components.
+	- @material-ui/icons: React icons.
+	- axios: HTTP client, library that help us to make HTTP requests.
+	- prop-types: Library to check React props.
+	- unistore: Redux alternative. Help us to manage the application state.
+	- eslint: Tool to help us checking problems in our code.
+	- prettier: Tool to help us with code style guide.
+	- husky: Git hooks. With it with can run eslint and prettier before every git commit.
+	- lint-staged: Tool to build a pipeline process and use together with husky.
+	- Inside Dockerfile, we can find *serve", that is a HTTP server, that serve a static site, single page application or just a static file.
+- Architecture
+	-  I thought in a simple Web App. The code is structured in components, so, each part of the web app that can be separated or that has a specific logic is an individual component. This is a good way to organize the code because we can have many small files (or small components) and it help us to us maintain it.
+-  Assumptions
+	- The movie search only works in the current page
+- Special build instructions
+	- You're going to have nodejs (v8.16+) and yarn
+	- Run **yarn** to install of dependencies
+	- Run **yarn start** to start the application in development mode
+	- Run **docker-compose run --rm tests** to run the unittests
+	- Run **docker-compose run --rm flake8** to run flake8
+	- To easy production deploy you can **make build**, but you need make tools installed before. Another way is **docker-compose up -d prod** works as well.
+- Endpoints: After run the application, you can check the API endpoins.
+- ```GET /api/v1/helthcheck```
+	- ```GET /api/v1/movie/upcoming```
+	- ```GET /api/v1/movie/upcoming?page=([0-9]+)```
 
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Running the project
+- Run docker-compose up dev
+- Go to the browser on ```http://localhost:8000/api/v1/healthcheck``` or ```http://localhost:8000/api/v1/movie/upcoming```

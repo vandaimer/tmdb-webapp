@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiURL = 'http://localhost:8000';
+const apiURL = 'http://157.245.217.187:8000';
 const baseURL = `${apiURL}/api/v1/movie`;
 
 const initialState = {

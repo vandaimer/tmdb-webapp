@@ -12,6 +12,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import StarIcon from '@material-ui/icons/Star';
+import ImageUnavailable from './imageUnavailable.jpg';
 
 
 
@@ -32,7 +33,7 @@ class MovieDetail extends Component {
             <CardActionArea>
               <CardMedia
                 className={classes.media}
-                image={movie.poster}
+                image={movie.poster || ImageUnavailable}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">

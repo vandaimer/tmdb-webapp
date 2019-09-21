@@ -34,7 +34,7 @@ class MovieDetail extends Component {
                 <Typography gutterBottom variant="h5" component="h2">
                   {movie.title}
                 </Typography>
-                <Typography gutterBottom variant="h7" component="h4">
+                <Typography gutterBottom variant="h6" component="h4">
                   Release {movie.release_date}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -44,8 +44,8 @@ class MovieDetail extends Component {
             </CardActionArea>
             <List component="nav" className={classes.root} aria-label="genres">
               {Boolean(movie.genres.length) &&
-                movie.genres.map(genre => (
-                  <ListItem button>
+                movie.genres.map((genre, index) => (
+                  <ListItem button key={index}>
                     <ListItemIcon>
                       <StarIcon />
                     </ListItemIcon>

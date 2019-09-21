@@ -33,7 +33,7 @@ const search = (state, word) => {
     return { searchList: [], isSearching: false };
   }
 
-  const searchList = movieList.filter(({ title }) => title.includes(word));
+  const searchList = movieList.filter(({ title }) => title.toLowerCase().includes(word.toLowerCase()));
 
   return { searchList, isSearching: true };
 };

@@ -24,14 +24,9 @@
 	- You're going to have nodejs (v8.16+) and yarn
 	- Run **yarn** to install of dependencies
 	- Run **yarn start** to start the application in development mode
-	- Run **docker-compose run --rm tests** to run the unittests
-	- Run **docker-compose run --rm flake8** to run flake8
-	- To easy production deploy you can **make build**, but you need make tools installed before. Another way is **docker-compose up -d prod** works as well.
-- Endpoints: After run the application, you can check the API endpoins.
-- ```GET /api/v1/helthcheck```
-	- ```GET /api/v1/movie/upcoming```
-	- ```GET /api/v1/movie/upcoming?page=([0-9]+)```
+	- To easy production deploy you can **make prod** and the application will be expose on port 5000.
 
 ## Running the project
-- Run docker-compose up dev
-- Go to the browser on ```http://localhost:8000/api/v1/healthcheck``` or ```http://localhost:8000/api/v1/movie/upcoming```
+- yarn
+- yarn start
+- Go to the browser on ```http://localhost:3000```
